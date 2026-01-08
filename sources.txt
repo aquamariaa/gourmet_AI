@@ -1,0 +1,20 @@
+
+
+https://huggingface.co/datasets/iamwarint/wongnai-restaurant-review
+-> wongnai-restaurant-review 
+
+Data Fields
+
+review_body: Text of the review provided by the customer. This is typically a 
+free-form comment about the restaurant experience.
+stars: An integer star rating (1-5) given by the customer to the restaurant, representing their satisfaction level.
+
+Additional Information
+
+The dataset was collected in 2025 from the Wongnai platform and is available for research and analysis purposes. 
+It contains a diverse set of reviews from different types of restaurants, making it suitable for a variety of tasks, 
+including sentiment analysis and review recommendation systems.
+
+-----
+
+
