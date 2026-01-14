@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+
+# Data (optional – choose policy)
+data/raw/*
+data/staged/*
+data/results/*
+!data/**/.gitkeep
