@@ -1,0 +1,6 @@
+pandas
+datasets
+python-dotenv
+tqdm
+streamlit
+plotly
