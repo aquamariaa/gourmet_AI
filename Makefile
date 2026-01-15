@@ -42,13 +42,10 @@ install: $(INSTALLED_FLAG)
 run: install
 	@echo "$(GREEN)🚀 Launching Gourmet AI Pipeline...$(RESET)"
 	@$(PY) scripts/main.py
-
-# 4. Run Dashboard
-dashboard: install
 	@echo "$(BOLD)$(GREEN)📊 Starting Interactive Dashboard...$(RESET)"
 	@$(STREAMLIT) run scripts/dashboard.py
 
-# 5. Maintenance
+# 4. Maintenance
 clean:
 	@echo "$(BLUE)🧹 Cleaning up generated files...$(RESET)"
 	@rm -rf data/raw/*.csv data/staged/*.csv data/results/*.csv
