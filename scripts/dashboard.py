@@ -17,7 +17,7 @@ SUGGESTION_PATH = "data/results/suggestion.csv"
 
 # Title
 st.title("🍽️ Gourmet AI: Restaurant Insights Dashboard")
-st.markdown("Automated analysis of Wongnai restaurant reviews using **ELT Pipeline** & **Rule-Based Logic**.")
+st.markdown("Automated analysis of Wongnai restaurant reviews.")
 
 def load_data():
     """Loads data safely."""
@@ -102,7 +102,7 @@ if df_analysis is not None:
             col_prev, col_info, col_next = st.columns([1, 5, 1])
             
             with col_prev:
-                if st.button("⬅️ Prev", use_container_width=True):
+                if st.button("⬅️ Prev", width='stretch'):
                     if st.session_state.suggestion_idx > 0:
                         st.session_state.suggestion_idx -= 1
                         st.rerun()
@@ -111,7 +111,7 @@ if df_analysis is not None:
                 st.caption(f"Showing suggestion {idx + 1} / {total_items}")
 
             with col_next:
-                if st.button("Next ➡️", use_container_width=True):
+                if st.button("Next ➡️", width='stretch'):
                     if st.session_state.suggestion_idx < total_items - 1:
                         st.session_state.suggestion_idx += 1
                         st.rerun()
@@ -121,7 +121,7 @@ if df_analysis is not None:
             st.caption("Overview of all issues")
             fig_severity = px.bar(df_suggestions, x="category", y="issue_count", color="severity_of_issue", 
                                   title="Complaints Breakdown", text_auto=True, height=300)
-            st.plotly_chart(fig_severity, use_container_width=True)
+            st.plotly_chart(fig_severity, width='stretch')
 
     # TAB 2: DEEP DIVE ANALYSIS
     with tab2:
@@ -131,7 +131,7 @@ if df_analysis is not None:
             st.subheader("Sentiment Distribution")
             fig_pie = px.pie(df_analysis, names='sentiment', title='Good vs Bad Reviews', hole=0.4, 
                              color='sentiment', color_discrete_map={'good':'#00cc96', 'bad':'#EF553B'})
-            st.plotly_chart(fig_pie, use_container_width=True)
+            st.plotly_chart(fig_pie, width='stretch')
             
             st.subheader("Filter Data")
             cat_filter = st.multiselect("Filter by Category", options=df_analysis['category'].unique())
@@ -146,7 +146,7 @@ if df_analysis is not None:
             if sent_filter != "All":
                 filtered_df = filtered_df[filtered_df['sentiment'] == sent_filter]
             
-            st.dataframe(filtered_df[['sentiment', 'category', 'keywords', 'review_text']], height=500, use_container_width=True)
+            st.dataframe(filtered_df[['sentiment', 'category', 'keywords', 'review_text']], height=500, width='stretch')
 
     # TAB 3: KEYWORDS
     with tab3:
@@ -168,4 +168,4 @@ if df_analysis is not None:
             st.subheader("Keyword Categories")
             fig_tree = px.treemap(df_keywords.head(50), path=['category_type', 'keyword'], values='frequency',
                                   title="Keyword Hierarchy (Top 50)")
-            st.plotly_chart(fig_tree, use_container_width=True)
+            st.plotly_chart(fig_tree, width='stretch')
